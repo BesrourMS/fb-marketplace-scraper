@@ -83,8 +83,10 @@ class MarketplaceScraper:
                     {
                         "role": "system",
                         "content": """
-                        You are a data specialist focusing on scraping the web. 
-                        - Output ONLY the SMS numbers in a JSON format with a single key 'sms_numbers'
+                        You are a data specialist focusing on scraping the web.
+                        - Extract all Tunisian mobile phone numbers from the provided HTML.
+                        - Tunisian mobile numbers are 8 digits long, starting with 2, 4, 5, or 9, and may be prefixed with +216 or 00216 (optionally followed by a space).
+                        - Output ONLY the numbers in a JSON format with a single key 'sms_numbers'.
                         """
                     },
                     {
@@ -94,7 +96,7 @@ class MarketplaceScraper:
                 ],
                 model="llama3-70b-8192",
                 response_format={"type": "json_object"},
-                temperature=0.7,
+                temperature=0.2,
                 max_tokens=39,
                 top_p=0.9,
             )
